@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,6 +98,7 @@ class VerhuurRegel {
     private int aantalDagen;
     private Exemplaar exemplaar;
 
+
     public VerhuurRegel(LocalDate eindDatum, int aantalDagen, Exemplaar exemplaar) {
         this.eindDatum = eindDatum;
         this.aantalDagen = aantalDagen;
@@ -106,14 +108,15 @@ class VerhuurRegel {
     public LocalDate getEindDatum() {
         return eindDatum;
     }
-    public int geefPeriode() {
-        int periode = 0;
-        for (int i = 0; i < aantalDagen; i++) {
-            periode = geefPeriode();
+
+    public String geefPeriode() {
+        List<VerhuurRegel> verhuurRegels = new ArrayList<>();
+        for (VerhuurRegel regel : verhuurRegels) {
+            System.out.println("Huurperiode: " + regel.geefPeriode());
+
         }
 
-        return periode;
+    return geefPeriode();
     }
-
 
 }
