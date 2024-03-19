@@ -7,14 +7,12 @@ public class VerhuurProduct {
     private double verhuurprijs;
     private double borg;
     private List<Exemplaar> exemplaren;
-
     public VerhuurProduct(double verhuurprijs, double borg) {
         this.verhuurprijs = verhuurprijs;
         this.borg = borg;
         this.exemplaren = new ArrayList<>();
         alleVerhuurProducten.add(this);
     }
-
     public static List<VerhuurProduct> getAlleVerhuurProducten() {
         return alleVerhuurProducten;
     }
@@ -28,7 +26,6 @@ public class VerhuurProduct {
         }
         return omschrijving.toString();
     }
-
     public List<Exemplaar> geefBeschikbareExemplaren(){
         List<Exemplaar> beschikbareExemplaren = new ArrayList<>();
         for(Exemplaar exemplaar : this.exemplaren){
@@ -58,7 +55,7 @@ public class VerhuurProduct {
     }
 }
 
-public class Exemplaar {
+class Exemplaar {
     private LocalDate aanschafDatum;
     private String serieNr;
     private boolean isVerhuurd;
@@ -86,9 +83,6 @@ public class Exemplaar {
         return omschrijving.toString();
     }
 
-
-
-
     public VerhuurRegel getVerhuurRegel() {
         return verhuurRegel;
     }
@@ -98,7 +92,7 @@ public class Exemplaar {
     }
 }
 
-public class VerhuurRegel {
+class VerhuurRegel {
     private LocalDate eindDatum;
     private int aantalDagen;
     private Exemplaar exemplaar;
@@ -109,13 +103,17 @@ public class VerhuurRegel {
         this.exemplaar = exemplaar;
         this.exemplaar.setVerhuurRegel(this);
     }
-
     public LocalDate getEindDatum() {
         return eindDatum;
     }
+    public int geefPeriode() {
+        int periode = 0;
+        for (int i = 0; i < aantalDagen; i++) {
+            periode = geefPeriode();
+        }
 
-    public int geefPeriode(){
-        return this.aantalDagen;
+        return periode;
     }
+
 
 }
